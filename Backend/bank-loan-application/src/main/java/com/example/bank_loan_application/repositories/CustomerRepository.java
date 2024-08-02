@@ -17,5 +17,5 @@ public interface CustomerRepository extends CrudRepository<Customer,Integer> {
     @Override
     Optional<Customer> findById(Integer integer);
 
-    Optional<Customer> findByCustomerEmail(@Param("emailAddress") String emailAddress);
+    Customer findByEmailAddress(@Param("email_address") String emailAddress);
 }

@@ -1,0 +1,15 @@
+.nav-bar{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.nav-bar::after {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    pointer-events: none; 
+}

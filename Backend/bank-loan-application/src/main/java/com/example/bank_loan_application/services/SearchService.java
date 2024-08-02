@@ -73,20 +73,17 @@ public class SearchService {
 
     CustomerLoanDetails getCustomerDetailsByMobileNumber(String value){
         CustomerLoanDetails customerLoanDetails =null;
-        Optional<Customer> customer = customerRepository.findByCustomerEmail(value);
+        Customer customer = customerRepository.findByEmailAddress(value);
         LoanAccount loanAccount = loanAccountRepository.findByCustomerId(Integer.parseInt(value));
-        if(customer.isPresent()){
-            customerLoanDetails.setCustomerId(customer.get().getId());
-            customerLoanDetails.setLoanAmount(loanAccount.getLoanAmount());
-            customerLoanDetails.setLoanInterest(loanAccount.getInterest_rate());
-            customerLoanDetails.setAccountActive(loanAccount.isActive());
-            customerLoanDetails.setLoanType(loanAccount.getLoanType());
-            customerLoanDetails.setLoan_id(loanAccount.getId());
-            customerLoanDetails.setRemainingReducedInterestBalance(loanAccount.getReducedInterestBalance());
 
-        }else{
-            new Exception("Customer Not Found, Please enter Correct mobile number");
-        }
+        customerLoanDetails.setCustomerId(customer.getId());
+        customerLoanDetails.setLoanAmount(loanAccount.getLoanAmount());
+        customerLoanDetails.setLoanInterest(loanAccount.getInterest_rate());
+        customerLoanDetails.setAccountActive(loanAccount.isActive());
+        customerLoanDetails.setLoanType(loanAccount.getLoanType());
+        customerLoanDetails.setLoan_id(loanAccount.getId());
+        customerLoanDetails.setRemainingReducedInterestBalance(loanAccount.getReducedInterestBalance());
+
         return customerLoanDetails;
     }
 }
