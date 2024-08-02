@@ -2,10 +2,14 @@ package com.example.bank_loan_application.models;
 
 import jakarta.persistence.Entity;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @NoArgsConstructor
+@Getter
+@Setter
 public class CustomerModel {
     private String name;
     private String mobileNumber;

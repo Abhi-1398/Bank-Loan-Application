@@ -2,11 +2,15 @@ package com.example.bank_loan_application.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Table(name = "customers")
 @Entity
 @Data
+@Getter
+@Setter
 public class Customer {
 
     @Id
