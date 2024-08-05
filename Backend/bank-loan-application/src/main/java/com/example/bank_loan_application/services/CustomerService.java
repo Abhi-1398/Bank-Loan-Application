@@ -16,4 +16,5 @@ public class CustomerService {
         return repository.save(customer);
     }
 
+    public Iterable<Customer> getAllCustomer(){ return repository.findAll(); }
 }

@@ -4,10 +4,12 @@ import com.example.bank_loan_application.entities.Customer;
 import com.example.bank_loan_application.models.CustomerModel;
 import com.example.bank_loan_application.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class CustomerController {
@@ -15,12 +17,18 @@ public class CustomerController {
     @Autowired
     CustomerService service;
 
+    @GetMapping("/api/getCustomer")
+    public Iterable<Customer> getAllCustomer(){
+        return service.getAllCustomer();
+    }
+
     @PostMapping("/api/addCustomer")
-    public String saveCustomer(@RequestBody Customer customer){
+    public ResponseEntity<?> saveCustomer(@RequestBody Customer customer){
         String message = "Customer Saved Succesfully";
-        System.out.println(customer);
         service.saveCustomer(customer);
-        return message;
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Customer Saved Successfully");
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 
